@@ -1,0 +1,11 @@
+{
+  "name": "mediame",
+  "version": "1.0.0",
+  "description": "DECO2017 Assignment",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Angel I",
+  "license": "ISC"
+}
