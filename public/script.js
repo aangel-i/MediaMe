@@ -58,7 +58,7 @@ function displayCard(card) {
     if (card.thumbnail != "") {
         img.src = card.thumbnail;
     } else {
-        img.src = "images/test.jpg";
+        img.src = ".../images/test.jpg";
     }
     img.alt = "thumbnail image of the movie/tv show";
     item.appendChild(img);
@@ -84,7 +84,7 @@ function displayCard(card) {
    
     for (let i = 0; i < parseInt(card.rating); i++) {
         let starFill = new Image(150,150);
-        starFill.src = "icons/star_fill.svg";
+        starFill.src = ".../icons/star_fill.svg";
         rating.appendChild(starFill);
     }
 
