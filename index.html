@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>MediaMe</title>
+</head>
+
+<!-- Nav Menu -->
+<nav>
+    <ul>
+        <li>All</li>
+        <li>Movies</li>
+        <li>TV shows</li>
+    </ul>
+</nav>
+
+<body>
+    <h1>All your media in the one place</h1>
+    <h3>Want an easy way to keep track of all the movies and TV shows you've watched in your lifetime? Start your personalised list
+        or add to an existing one below!
+    </h3>
+   
+    <!-- Collapsible for form -->
+    <!-- <button type="button" class="collapsible">Add to list</button>
+
+    <button class="collapsible">Open Collapsible</button>
+<div class="content">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div> -->
+
+<div class="wrap-collabsible">
+    <input id="collapsible" class="toggle" type="checkbox">
+    <label for="collapsible" class="lbl-toggle">Add to list</label>
+    <div class="collapsible-content">
+      <div class="content-inner">
+            <form id="myForm" action="" method="">
+                <p>Title: <input type="text" name="title"></p>
+                <p>Type: <select name="type">
+                    <option value="movie">Movie</option>
+                    <option value="tvshow">TV Show</option>
+                </select> </p>
+                <p>Thumbnail: <input type="file" name="thumbnail" accept="image/png, image/jpg"> </p>
+                <p>Genre: <select name="genre">
+                    <option value="drama">Drama</option>
+                    <option value="horror">Horror</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="romance">Romance</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="documentary">Documentary</option>
+                    </select>
+                Rating: <select name="rating"> 
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>      
+                    </select>
+                </p>
+                <p>Comments: <br>
+                    <textarea rows = "2" cols = "50" name = "comment"></textarea>
+                </p>
+                <input type="submit"/>
+            </form>
+      </div>
+    </div>
+</div>
+
+<h2>All</h2>
+<div id="card-section">
+    <p class="empty-list-text">Your list seems to be empty :(. Add one now!</p>
+</div>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>

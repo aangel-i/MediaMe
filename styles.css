@@ -1,0 +1,144 @@
+* {
+    font-family: monospace;
+}
+
+/* Nav menu that filters the content. To be placed on LHS of screen */
+nav {
+    background-color: white;
+    position: fixed;
+    left: 0;
+    z-index: 50;
+    height: 100vh;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-right: 2px solid black;
+}
+
+body {
+    margin-left: 20vw;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 6em;
+    /* padding-right: 3em; */
+    padding-top: 0.75em;
+    margin-bottom: 0.5em;
+    margin-top: 0;
+    color: blue;
+}
+
+h3 {
+    font-weight: normal;
+    font-size: 1.2em;
+    padding-right: 20em;
+    margin-bottom: 3em;
+}
+
+h2 {
+    font-size: 3em;
+    margin-top: 3em;
+    margin-bottom: 0;
+}
+
+/* details {
+    border: 3px solid black;
+    width: 45em;
+    transition: ;
+}
+
+summary {
+    cursor: pointer;
+    text-align: center;
+    font-size: 2em;
+    padding: 18px;
+}
+  
+summary:hover {
+    color: blue;
+    transition: 0.2s ease-out;
+}
+
+
+details[open] form {
+    background-color: white;
+    padding: 0em 2em 2em 2em;
+    transition-timing-function: ease;
+} */
+
+/* Code below is modification of https://www.digitalocean.com/community/tutorials/css-collapsible */
+.wrap-collabsible {
+    margin-bottom: 1.2rem 0;
+    border: 3px solid;
+    margin-right: 40em;
+}
+  
+input[type='checkbox'] {
+    display: none;
+}
+  
+.lbl-toggle {
+    display: block;
+    text-align: center;
+  
+    padding: 1rem;
+  
+    color: blue;
+    font-size: 1.7em;
+  
+    cursor: pointer;
+  
+    transition: all 0.25s ease-out;
+}
+  
+.lbl-toggle:hover {
+    color: white;
+    background: blue;
+}
+  
+.collapsible-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height .25s ease-in-out;
+}
+  
+.toggle:checked + .lbl-toggle + .collapsible-content {
+    max-height: 100vh;
+}
+  
+.collapsible-content .content-inner {
+    font-size: 1.2em;
+    background: white;
+    padding: 1em;
+}
+
+#card-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.card {
+    margin-right: 20px;
+    margin-top: 40px;
+    width: 350px;
+    border: 2px solid black;
+}
+
+.card .cardText {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.card h4 {
+    font-size: 18px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card img {
+    width: 100%;
+    height: 45%;
+}
