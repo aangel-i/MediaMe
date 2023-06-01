@@ -43,14 +43,13 @@ form.addEventListener("submit", function(event) {
         cardSectionElem.appendChild(para);
     } else if (cardList.length !== 0) {
         let text = document.getElementById("empty-list-text");
-        text.remove();
+        cardSectionElem.removeChild(text);
     };
     console.log(cardList);
 });
 
 let imgInput = document.getElementById("thumbnail");
 let imgDest = document.getElementsByClassName("card");
-
 imgInput.addEventListener("change", function(event){
     let selectedFile = event.target.files[0];
     reader.onloadend = function(e) {
@@ -99,9 +98,8 @@ function displayCard(card) {
 
    
     for (let i = 0; i < parseInt(card.rating); i++) {
-        let starFill = new Image(150,150);
-        starFill.src = ".../icons/star_fill.svg";
-        console.log(starFill);
+        let starFill = new Image(50,50);
+        starFill.src = "icons/star_fill.svg";
         rating.appendChild(starFill);
     }
     console.log(card.rating);
