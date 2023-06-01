@@ -1,4 +1,5 @@
 let cardSectionElem = document.getElementById("card-section");
+let reader = new FileReader();
 
 // data submitted from user to add to card
 let cardList = [];
@@ -14,6 +15,8 @@ function addCard (title, type, genre, rating, thumbnail, comment = "") {
         id: cardList.length,
         date: new Date().toISOString(),
     }
+
+    console.log(thumbnail);
     
     cardList.push(card);
     displayCard(card);
@@ -38,17 +41,29 @@ form.addEventListener("submit", function(event) {
         let textnode = document.textContent("Your list seems to be empty :(. Add one now!");
         para.appendChild(textnode);
         cardSectionElem.appendChild(para);
-    } else if (cardList.length != 0 && document.getElementById("empty-list-text") != null) {
+    } else if (cardList.length !== 0) {
         let text = document.getElementById("empty-list-text");
-        cardSectionElem.removeChild(text);
-    }
-
+        text.remove();
+    };
     console.log(cardList);
-})
+});
 
+let imgInput = document.getElementById("thumbnail");
+let imgDest = document.getElementsByClassName("card");
+
+imgInput.addEventListener("change", function(event){
+    let selectedFile = event.target.files[0];
+    reader.onloadend = function(e) {
+        let base64 = e.target.result;
+        console.log(base64);
+        localStorage.setItem("imgData", base64);
+        imgDest.src = base64;
+    };
+    reader.readAsDataURL(selectedFile);
+    console.log("successfully parse user file");
+});
 
 //displaying card onto the web
-
 function displayCard(card) {
     let item = document.createElement("div");
     item.classList.add("card");
@@ -58,7 +73,7 @@ function displayCard(card) {
     if (card.thumbnail != "") {
         img.src = card.thumbnail;
     } else {
-        img.src = ".../images/test.jpg";
+        img.src = "/images/test.jpg";
     }
     img.alt = "thumbnail image of the movie/tv show";
     item.appendChild(img);
@@ -81,12 +96,16 @@ function displayCard(card) {
     //rating of media
     let rating = document.createElement("div");
     rating.classList.add("rating");
+
    
     for (let i = 0; i < parseInt(card.rating); i++) {
         let starFill = new Image(150,150);
         starFill.src = ".../icons/star_fill.svg";
+        console.log(starFill);
         rating.appendChild(starFill);
     }
+    console.log(card.rating);
+    cardText.appendChild(rating);
 
     //comments for the media
     if (card.comment != "") {
@@ -97,6 +116,4 @@ function displayCard(card) {
         cardSectionElem.appendChild(item);
     }
 }
-
-//testing to see if push it will commit now
 
