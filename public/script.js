@@ -23,11 +23,11 @@ function addCard (title, type, genre, rating, thumbnail, comment = "") {
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
+    // raise alert if the required filled are not filled in properly
     if (!form.elements.title.value || !form.elements.type.value || !form.elements.genre.value || !form.elements.rating.value) {
         alert("form not filled in properly");
         return;
     }
-
     addCard(
         form.elements.title.value,
         form.elements.type.value,
@@ -38,6 +38,7 @@ form.addEventListener("submit", function(event) {
     )
     form.reset();
 
+    //add or remove empty list text
     if (cardList.length == 0) {
         let para = document.createElement("p");
         para.setAttribute("id", "empty-list-text");
@@ -55,19 +56,11 @@ form.addEventListener("submit", function(event) {
     console.log(cardList);
 });
 
-// let imgInput = document.getElementById("thumbnail");
-// let imgDest = document.getElementsByClassName("card");
-// imgInput.addEventListener("change", function(event){
-//     let selectedFile = event.target.files[0];
-//     reader.onloadend = function(e) {
-//         let base64 = e.target.result;
-//         console.log(base64);
-//         localStorage.setItem("imgData", base64);
-//         imgDest.src = base64;
-//     };
-//     reader.readAsDataURL(selectedFile);
-//     console.log("successfully parse user file");
-// });
+let imgInput = document.getElementsByName("thumbnail")[0];
+let selectedFile;
+imgInput.addEventListener("change", function(event){
+    selectedFile = event.target.files[0];
+});
 
 //displaying card onto the web
 function displayCard(card) {
@@ -77,7 +70,12 @@ function displayCard(card) {
     // thumbnail of media as image
     let img = new Image(600, 600);
     if (card.thumbnail != "") {
-        img.src = card.thumbnail;
+        reader.onloadend = function(e) {
+            let base64 = e.target.result;
+            localStorage.setItem("imgData", base64);
+            img.src = base64;
+        };
+        reader.readAsDataURL(selectedFile);
     } else {
         img.src = "/images/test.jpg";
     }
