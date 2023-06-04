@@ -36,14 +36,14 @@
     <label for="collapsible" class="lbl-toggle">Add to list</label>
     <div class="collapsible-content">
       <div class="content-inner">
-            <form id="myForm" action="" method="">
-                <p>Title: <input type="text" name="title"></p>
+            <form id="myForm" action="" method="" autocomplete="off">
+                <p>Title: <input type="text" name="title" required></p>
                 <p>Type: <select name="type">
                     <option value="movie">Movie</option>
                     <option value="tvshow">TV Show</option>
                 </select> </p>
                 <p>Thumbnail: <input type="file" name="thumbnail" id="thumbnail" accept=".png,.jpg"> </p>
-                <p>Genre: <select name="genre">
+                <p>Genre: <select name="genre" required>
                     <option value="drama">Drama</option>
                     <option value="horror">Horror</option>
                     <option value="comedy">Comedy</option>
@@ -52,7 +52,7 @@
                     <option value="fantasy">Fantasy</option>
                     <option value="documentary">Documentary</option>
                     </select>
-                Rating: <select name="rating"> 
+                Rating: <select name="rating" required> 
                     <option value=0>0</option>
                     <option value=1>1</option>
                     <option value=2>2</option>
@@ -62,9 +62,9 @@
                     </select>
                 </p>
                 <p>Comments: <br>
-                    <textarea rows = "2" cols = "50" name = "comment"></textarea>
+                    <textarea rows = "2" cols = "50" name = "comment" maxlength="150"></textarea>
                 </p>
-                <input type="submit"/>
+                <input type="submit" value="submit"/>
             </form>
       </div>
     </div>

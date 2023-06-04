@@ -53,24 +53,8 @@ form.addEventListener("submit", function(event) {
         form.elements.rating.value,
         form.elements.thumbnail.value,
         form.elements.comment.value
-    )
+    );
     form.reset();
-
-    //add or remove empty list text
-    if (JSON.parse(localStorage.getItem("cards")).length == 0) {
-        let para = document.createElement("p");
-        para.setAttribute("id", "empty-list-text");
-        let textnode = document.textContent("Your list seems to be empty :(. Add one now!");
-        para.appendChild(textnode);
-        cardSectionElem.appendChild(para);
-        console.log("Im adding the empty text");
-        emptyListTextExists = true;
-    } else if (JSON.parse(localStorage.getItem("cards")).length != 0 && emptyListTextExists == true) {
-        let text = document.getElementById("empty-list-text");
-        cardSectionElem.removeChild(text);
-        console.log("I'm removing the empty text");
-        emptyListTextExists = false;
-    };
 });
 
 let imgInput = document.getElementsByName("thumbnail")[0];
@@ -81,7 +65,6 @@ imgInput.addEventListener("change", function(event){
 
 //displaying card onto the web
 function displayCards() {
-    
     cardList = JSON.parse(localStorage.getItem("cards"));
     if (cardList == null) {return};
 
@@ -93,6 +76,13 @@ function displayCards() {
         let item = document.createElement("div");
         item.classList.add("card");
     
+        // add delete button to each card
+        let delButton = document.createElement("button");
+        delButton.id = "del-button";
+        delButton.setAttribute("del-id", card.id);
+        delButton.setAttribute("onclick", "deleteCard(this);")
+        item.appendChild(delButton);
+        
         // thumbnail of media as image
         let img = new Image(600, 600);
         if (card.thumbnail != "") {
@@ -167,7 +157,36 @@ function displayCards() {
     
         cardSectionElem.appendChild(item);
     });
+
+        //add or remove empty list text
+        if (JSON.parse(localStorage.getItem("cards")).length == 0) {
+            let para = document.createElement("p");
+            para.setAttribute("id", "empty-list-text");
+            para.textContent = "Your list seems to be empty :(. Add one now!";
+            cardSectionElem.appendChild(para);
+            console.log("Im adding the empty text");
+            emptyListTextExists = true;
+        } else if (JSON.parse(localStorage.getItem("cards")).length != 0 && emptyListTextExists == true) {
+            let text = document.getElementById("empty-list-text");
+            cardSectionElem.removeChild(text);
+            console.log("I'm removing the empty text");
+            emptyListTextExists = false;
+        };
+}
+
+function deleteCard(btn) {
     
+    let cardId = btn.getAttribute("del-id");
+    let cardArray = JSON.parse(localStorage.getItem("cards"));
+    let idx = 0;
+    var idxDel;
+    cardArray.forEach((card) => {
+        if (card.id == cardId) { idxDel = idx }
+        idx++;
+    });
+    cardArray.splice(idxDel, 1);
+    localStorage.setItem("cards", JSON.stringify(cardArray));
+    displayCards();
 }
 
 displayCards();
