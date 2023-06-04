@@ -125,6 +125,7 @@ input[type='checkbox'] {
     width: 350px;
     border: 2px solid black;
     position: relative;
+    height: 42.5em;
 }
 
 .card .cardText {
