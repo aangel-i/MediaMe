@@ -2,6 +2,7 @@ let cardSectionElem = document.getElementById("card-section");
 let reader = new FileReader();
 let emptyListTextExists = true;
 var idGenerator; // increases whenever item is added and remains unchanged if item is removed.
+let viewType = "";
 
 // data submitted from user to add to card
 let form = document.getElementById("myForm");
@@ -35,7 +36,9 @@ function addCard (title, type, genre, rating, thumbnail, comment = "") {
     }
     localStorage.setItem("cards", JSON.stringify(cardList));
 
-    displayCards();
+    form.reset();
+    viewType = "";
+    displayCards(viewType);
 }
 
 form.addEventListener("submit", function(event) {
@@ -53,8 +56,7 @@ form.addEventListener("submit", function(event) {
         form.elements.rating.value,
         form.elements.thumbnail.value,
         form.elements.comment.value
-    );
-    form.reset();
+    )
 });
 
 let imgInput = document.getElementsByName("thumbnail")[0];
@@ -64,9 +66,16 @@ imgInput.addEventListener("change", function(event){
 });
 
 //displaying card onto the web
-function displayCards() {
+function displayCards(displayType) {
     cardList = JSON.parse(localStorage.getItem("cards"));
+
     if (cardList == null) {return};
+
+    let heading = document.getElementsByTagName("h2")[0];
+    heading.innerHTML = "";
+    if (displayType == "movie") {heading.innerHTML = "Movie"}
+    else if (displayType == "tvshow") {heading.innerHTML = "TV show"}
+    else (heading.innerHTML = "All");
 
     cardSectionElem.innerHTML = "";
     
@@ -154,8 +163,13 @@ function displayCards() {
         date.classList.add("date-text");
         date.textContent = card.date;
         cardFooter.appendChild(date);
-    
-        cardSectionElem.appendChild(item);
+        
+        if (displayType=='') {
+            cardSectionElem.appendChild(item);
+        } else {
+            if ( displayType == card.type){ cardSectionElem.appendChild(item);}
+        }
+        
     });
 
         //add or remove empty list text
@@ -175,7 +189,6 @@ function displayCards() {
 }
 
 function deleteCard(btn) {
-    
     let cardId = btn.getAttribute("del-id");
     let cardArray = JSON.parse(localStorage.getItem("cards"));
     let idx = 0;
@@ -186,8 +199,9 @@ function deleteCard(btn) {
     });
     cardArray.splice(idxDel, 1);
     localStorage.setItem("cards", JSON.stringify(cardArray));
-    displayCards();
+    displayCards(viewType);
 }
 
-displayCards();
+
+displayCards(viewType);
 

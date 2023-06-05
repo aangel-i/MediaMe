@@ -12,13 +12,20 @@ nav {
     width: 15vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     border-right: 2px solid black;
+}
+
+nav p {
+    color: blue;
+    font-size: 2em;
+    align-self: center;
+    padding-top: 1em;
 }
 
 body {
     margin-left: 20vw;
     margin-top: 0;
+    padding-bottom: 3em;
 }
 
 h1 {
@@ -116,22 +123,23 @@ input[type='checkbox'] {
 
 textarea {
     resize: none;
-    border: 2px solid black;
+    border: 1.5px solid black;
+    width: 32em;
 }
 
 input[type="text"] {
-    border: 2px solid black;
+    border: 1.5px solid black;
     width: 25em;
 }
 
 select {
-    border: 2px solid black;
+    border: 1.5px solid black;
     background-color: transparent;
     width: 10em;
 }
 
 input::file-selector-button{
-    border: 2px solid black;
+    border: 1.5px solid black;
     background-color: transparent;
     width: 7em;
 }
@@ -143,7 +151,7 @@ input::file-selector-button{
 input[type="submit"]{
     margin-top: 1em;
     margin-bottom: 1em;
-    border: 2px solid black;
+    border: 1.5px solid black;
     background-color: transparent;
     width: 10em;
     height: 2.4em;
@@ -234,4 +242,53 @@ input[type="submit"]:hover {
 #del-button:hover {
     /* background-color: white; */
     cursor: pointer;
+}
+
+@media (max-width: 950px) {
+    .content {
+        padding-left: 2em;
+    }
+    
+    h3 {
+        margin-right: 5em;
+    }
+
+    body {
+        margin: 0;
+        }
+
+    nav {
+        position: sticky;
+        /* top: 0; --> make it to be on top of screen all the time*/
+        background-color: white;
+        border-bottom: 2px solid black;
+        border-right: 0;
+        height: 10vh;
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    nav p {
+        padding-right: 0.5em;
+        padding-bottom: 0.5em;
+    }
+}
+
+@media (max-width: 620px) {
+    .wrap-collabsible{
+        width: 30em;
+    }
+
+    textarea {
+        width: 23em;
+    }
+    
+    input[type="text"] {
+        width: 22em;
+    }
+    
+    select, input::file-selector-button {
+        width: 6em;
+    }
 }
