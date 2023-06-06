@@ -8,7 +8,7 @@ To deploy, download npm by running 'npm install' to download the dependencies. T
 
 As the app is using localStorage to store all user input data, the app can only store a small amount of data. Images can be quite large files thus for the meantime any images stored in the 'example_thumbnail_inputs' file can be used to test out the custom image feature of the app. 
 
-## Development process and iterations (strong emphasis on lessons learned and best practices)
+## Development process and iterations
 For my HTML and CSS the development process was pretty smooth. I finished with the styling of a fresh new webpage before proceeding to JavaScript to add functionality and generating cards using DOM manipulation. This is where most of my programming issues lie.
 
 As I had an issue with parsing Date objects from localStorage (terminal keeps raising an error saying they can't get the object), I had to modify my original date attribute to store an already modified string based on the methods of the Date objects. I am still not sure how to parse it as objects (even though I used JSON.parse()), but by storing most of my attributes as strings means that it will raise less errors when trying to retrieve data. 
